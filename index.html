@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Spatiora — Muhammad Abia | GIS & Remote Sensing Specialist</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Crect width='800' height='800' rx='180' fill='%23080f1e'/%3E%3Cellipse cx='400' cy='400' rx='310' ry='120' fill='none' stroke='%2300d4c8' stroke-width='8' transform='rotate(-25 400 400)' opacity='0.5'/%3E%3Ccircle cx='400' cy='390' r='190' fill='%2300d4c8' fill-opacity='0.07'/%3E%3Cpath d='M460 268C460 268 430 252 400 252C355 252 318 275 318 318C318 355 345 372 378 383L422 397C455 408 482 425 482 468C482 514 445 532 400 532C368 532 335 518 315 502' fill='none' stroke='url(%23sg)' stroke-width='46' stroke-linecap='round'/%3E%3Cdefs%3E%3ClinearGradient id='sg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2364ffda'/%3E%3Cstop offset='100%25' stop-color='%2300b4aa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='570' cy='318' r='18' fill='%2300d4c8' opacity='0.9'/%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -27,8 +28,6 @@
   .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--teal);transition:width 0.3s;}
   .nav-links a:hover{color:var(--teal);}
   .nav-links a:hover::after{width:100%;}
-  .admin-btn{padding:0.4rem 1rem;background:transparent;border:1px solid rgba(0,212,200,0.3);color:var(--teal);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;border-radius:100px;cursor:pointer;transition:all 0.3s;font-family:'DM Sans',sans-serif;}
-  .admin-btn:hover{background:var(--teal-subtle);}
 
   #hero{min-height:100vh;display:flex;align-items:center;padding:8rem 4rem 4rem;position:relative;overflow:hidden;}
   .hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(0,212,200,0.08) 0%,transparent 70%);top:50%;right:-100px;transform:translateY(-50%);pointer-events:none;}
@@ -148,35 +147,6 @@
   .footer-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:var(--teal);letter-spacing:0.1em;}
   .footer-copy{font-size:0.75rem;color:var(--white-subtle);}
 
-  /* ADMIN PANEL */
-  .admin-overlay{position:fixed;inset:0;background:rgba(8,15,30,0.98);z-index:9999;display:none;flex-direction:column;overflow-y:auto;padding:2rem;backdrop-filter:blur(20px);}
-  .admin-overlay.open{display:flex;}
-  .admin-inner{max-width:800px;width:100%;margin:0 auto;}
-  .admin-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid rgba(0,212,200,0.2);}
-  .admin-title{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;color:var(--teal);}
-  .admin-close{background:transparent;border:1px solid rgba(0,212,200,0.3);color:var(--white-dim);padding:0.4rem 1rem;border-radius:100px;cursor:pointer;font-size:0.85rem;transition:all 0.3s;}
-  .admin-close:hover{border-color:var(--teal);color:var(--teal);}
-  .admin-section{margin-bottom:2.5rem;}
-  .admin-section-title{font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(0,212,200,0.1);}
-  .admin-upload-area{border:2px dashed rgba(0,212,200,0.2);border-radius:8px;padding:2rem;text-align:center;cursor:pointer;transition:all 0.3s;position:relative;}
-  .admin-upload-area:hover{border-color:var(--teal);background:var(--teal-subtle);}
-  .admin-upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
-  .admin-upload-label{font-size:0.85rem;color:var(--white-dim);}
-  .admin-upload-label span{color:var(--teal);}
-  .admin-gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;margin-top:1rem;}
-  .admin-gallery-item{aspect-ratio:4/3;border-radius:6px;overflow:hidden;border:1px solid rgba(0,212,200,0.1);position:relative;background:var(--navy-light);}
-  .admin-gallery-item img{width:100%;height:100%;object-fit:cover;}
-  .admin-gallery-remove{position:absolute;top:4px;right:4px;background:rgba(8,15,30,0.8);border:1px solid rgba(255,100,100,0.4);color:#ff6464;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:0.7rem;transition:all 0.3s;opacity:0;}
-  .admin-gallery-item:hover .admin-gallery-remove{opacity:1;}
-  .admin-profile-preview{display:flex;align-items:center;gap:1.5rem;margin-bottom:1rem;}
-  .admin-profile-img{width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid rgba(0,212,200,0.3);background:var(--navy-light);}
-  .admin-input{width:100%;padding:0.65rem 1rem;background:var(--navy-light);border:1px solid rgba(0,212,200,0.15);border-radius:6px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:0.875rem;margin-bottom:0.75rem;outline:none;transition:border 0.3s;}
-  .admin-input:focus{border-color:var(--teal);}
-  .admin-save-btn{padding:0.75rem 2rem;background:var(--teal);color:var(--navy);font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;border:none;border-radius:4px;cursor:pointer;transition:all 0.3s;}
-  .admin-save-btn:hover{background:var(--accent);}
-  .admin-toast{position:fixed;bottom:2rem;right:2rem;padding:0.75rem 1.5rem;background:var(--teal);color:var(--navy);border-radius:6px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;z-index:99999;transform:translateY(100px);opacity:0;transition:all 0.3s;}
-  .admin-toast.show{transform:translateY(0);opacity:1;}
-
   @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
   .fade-up{opacity:1;transform:none;}
 
@@ -289,12 +259,12 @@
       <p class="section-sub" style="margin-bottom:0">Photos from field work, training sessions, and project documentation.</p>
     </div>
     <div class="gallery-grid fade-up" id="galleryGrid">
-      <div class="gallery-item"><img src="gallery1.jpeg" alt="Training Session"><div class="gallery-item-overlay"><div class="gallery-item-label">Training Session</div></div></div>
-      <div class="gallery-item"><img src="gallery2.jpeg" alt="Field Survey"><div class="gallery-item-overlay"><div class="gallery-item-label">Field Survey</div></div></div>
-      <div class="gallery-item"><img src="gallery3.jpeg" alt="Project Work"><div class="gallery-item-overlay"><div class="gallery-item-label">Project Work</div></div></div>
-      <div class="gallery-item"><img src="gallery4.jpeg" alt="Lecture"><div class="gallery-item-overlay"><div class="gallery-item-label">Lecture</div></div></div>
-      <div class="gallery-item"><img src="gallery5.jpeg" alt="GIS Maps"><div class="gallery-item-overlay"><div class="gallery-item-label">GIS Maps</div></div></div>
-      <div class="gallery-item"><img src="gallery6.jpeg" alt="Workshop"><div class="gallery-item-overlay"><div class="gallery-item-label">Workshop</div></div></div>
+      <div class="gallery-item"><img src="gallery1.jpg" alt="Training Session"><div class="gallery-item-overlay"><div class="gallery-item-label">Training Session</div></div></div>
+      <div class="gallery-item"><img src="gallery2.jpg" alt="Field Survey"><div class="gallery-item-overlay"><div class="gallery-item-label">Field Survey</div></div></div>
+      <div class="gallery-item"><img src="gallery3.jpg" alt="Project Work"><div class="gallery-item-overlay"><div class="gallery-item-label">Project Work</div></div></div>
+      <div class="gallery-item"><img src="gallery4.jpg" alt="Lecture"><div class="gallery-item-overlay"><div class="gallery-item-label">Lecture</div></div></div>
+      <div class="gallery-item"><img src="gallery5.jpg" alt="GIS Maps"><div class="gallery-item-overlay"><div class="gallery-item-label">GIS Maps</div></div></div>
+      <div class="gallery-item"><img src="gallery6.jpg" alt="Workshop"><div class="gallery-item-overlay"><div class="gallery-item-label">Workshop</div></div></div>
     </div>
   </div>
 </section>
@@ -399,48 +369,8 @@
   <div class="footer-copy">© 2026 Spatiora · Muhammad Abia Saefulloh · Bandung, Indonesia</div>
 </footer>
 
-<!-- ADMIN PANEL -->
-<div class="admin-overlay" id="adminPanel">
-  <div class="admin-inner">
-    <div class="admin-header">
-      <div class="admin-title">⚙ Admin Panel</div>
-      <button class="admin-close" onclick="closeAdmin()">✕ Close</button>
-    </div>
 
-    <div class="admin-section">
-      <div class="admin-section-title">📸 Profile Photo</div>
-      <div class="admin-profile-preview">
-        <img id="adminProfilePreview" class="admin-profile-img" src="" alt="" style="display:none">
-        <div class="admin-upload-area" style="padding:1rem 2rem;display:inline-block;min-width:280px">
-          <input type="file" accept="image/*" onchange="handleProfilePhoto(this)">
-          <div class="admin-upload-label">Click to upload profile photo · <span>PNG, JPG up to 5MB</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="admin-section">
-      <div class="admin-section-title">🖼 Gallery / Documentation Photos</div>
-      <div class="admin-upload-area">
-        <input type="file" accept="image/*" multiple onchange="handleGalleryUpload(this)">
-        <div class="admin-upload-label">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:block;margin:0 auto 0.5rem;opacity:0.4"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-          Drag & drop or <span>browse files</span> · Multiple images supported
-        </div>
-      </div>
-      <div class="admin-gallery-grid" id="adminGalleryGrid"></div>
-    </div>
-
-    <div class="admin-section">
-      <div class="admin-section-title">📬 Contact Information</div>
-      <input class="admin-input" type="email" id="adminEmail" placeholder="Email" value="muhammad.abia@gmail.com">
-      <input class="admin-input" type="text" id="adminWA" placeholder="WhatsApp number (e.g. 6281234567890)">
-      <button class="admin-save-btn" onclick="saveContactInfo()">Save Contact Info</button>
-    </div>
-  </div>
-</div>
-<div class="admin-toast" id="toast">✓ Saved!</div>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Set email dynamically to prevent Cloudflare obfuscation
   (function(){
     var u = 'muhammad.abia';
@@ -449,97 +379,29 @@
     if(el){ el.href = 'mailto:' + u + '@' + d; el.textContent = u + '@' + d; }
   })();
 
-  let galleryImages = [];
-
-  function openAdmin(){ document.getElementById('adminPanel').classList.add('open'); }
-  function closeAdmin(){ document.getElementById('adminPanel').classList.remove('open'); }
-
-  function showToast(msg){
-    const t = document.getElementById('toast');
-    t.textContent = msg; t.classList.add('show');
-    setTimeout(()=>t.classList.remove('show'), 2500);
-  }
-
-  function handleProfilePhoto(input){
-    if(!input.files[0]) return;
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const src = e.target.result;
-      const preview = document.getElementById('adminProfilePreview');
-      preview.src = src; preview.style.display = 'block';
-      document.getElementById('heroPhotoContainer').innerHTML =
-        `<img src="${src}" class="hero-photo" alt="Muhammad Abia">`;
-      showToast('✓ Profile photo updated!');
-    };
-    reader.readAsDataURL(input.files[0]);
-  }
-
-  function handleGalleryUpload(input){
-    Array.from(input.files).forEach(file => {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const id = Date.now() + Math.random();
-        const label = file.name.replace(/\.[^/.]+$/,'');
-        galleryImages.push({id, src: e.target.result, label});
-        renderGallery(); renderAdminGallery();
-        showToast(`✓ ${galleryImages.length} photo(s) in gallery`);
-      };
-      reader.readAsDataURL(file);
-    });
-  }
-
-  function renderGallery(){
-    const grid = document.getElementById('galleryGrid');
-    if(!galleryImages.length) return;
-    grid.innerHTML = galleryImages.map(img => `
-      <div class="gallery-item">
-        <img src="${img.src}" alt="${img.label}">
-        <div class="gallery-item-overlay"><div class="gallery-item-label">${img.label}</div></div>
-      </div>`).join('');
-  }
-
-  function renderAdminGallery(){
-    document.getElementById('adminGalleryGrid').innerHTML = galleryImages.map(img => `
-      <div class="admin-gallery-item">
-        <img src="${img.src}" alt="${img.label}">
-        <div class="admin-gallery-remove" onclick="removeImage('${img.id}')">✕</div>
-      </div>`).join('');
-  }
-
-  function removeImage(id){
-    galleryImages = galleryImages.filter(i => i.id != id);
-    renderGallery(); renderAdminGallery();
-    if(!galleryImages.length){
-      document.getElementById('galleryGrid').innerHTML = ['Training Session','Field Survey','Project Work','Lecture','GIS Maps','Workshop'].map(label=>`
-        <div class="gallery-item"><div class="gallery-placeholder">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span>${label}</span></div></div>`).join('');
-    }
-    showToast('Photo removed');
-  }
-
-  function saveContactInfo(){
-    const email = document.getElementById('adminEmail').value;
-    const wa = document.getElementById('adminWA').value;
-    if(email){ document.getElementById('contactEmail').textContent = email; document.getElementById('contactEmail').href = `mailto:${email}`; }
-    if(wa){ document.getElementById('waLink').href = `https://wa.me/${wa}`; }
-    showToast('✓ Contact info saved!');
-  }
-
+  // Scroll observer for fade-up animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if(entry.isIntersecting){
         entry.target.classList.add('visible');
-        entry.target.querySelectorAll('.skill-fill').forEach(b=>b.classList.add('animated'));
         observer.unobserve(entry.target);
       }
     });
   }, {threshold:0.05, rootMargin:'0px 0px -50px 0px'});
   document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 
-  // Fallback: show all content after 1s in case observer doesn't fire
-  setTimeout(() => {
-    document.querySelectorAll('.fade-up').forEach(el => {
-      el.classList.add('visible');
-      el.querySelectorAll('.skill-fill
-
+  // Active nav highlight on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if(window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--teal)' : '';
+    });
+  });
+</script>
+</body>
+</html>
