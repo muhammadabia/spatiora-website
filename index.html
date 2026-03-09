@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spatiora — Muhammad Abia | GIS & Remote Sensing Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:#080f1e; --navy-mid:#0d1a2e; --navy-light:#112240;
+    --teal:#00d4c8; --teal-dim:#00b4aa;
+    --teal-glow:rgba(0,212,200,0.15); --teal-subtle:rgba(0,212,200,0.06);
+    --white:#e8f0f2; --white-dim:rgba(232,240,242,0.6);
+    --white-subtle:rgba(232,240,242,0.25); --accent:#64ffda;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:0.4;}
+  .grid-bg{position:fixed;inset:0;background-image:linear-gradient(rgba(0,212,200,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,200,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 4rem;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,rgba(8,15,30,0.95) 0%,transparent 100%);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,212,200,0.08);}
+  .nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;letter-spacing:0.1em;color:var(--teal);text-decoration:none;}
+  .nav-logo span{color:var(--white);}
+  .nav-links{display:flex;gap:2rem;list-style:none;}
+  .nav-links a{color:var(--white-dim);text-decoration:none;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.3s;position:relative;}
+  .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--teal);transition:width 0.3s;}
+  .nav-links a:hover{color:var(--teal);}
+  .nav-links a:hover::after{width:100%;}
+  .admin-btn{padding:0.4rem 1rem;background:transparent;border:1px solid rgba(0,212,200,0.3);color:var(--teal);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;border-radius:100px;cursor:pointer;transition:all 0.3s;font-family:'DM Sans',sans-serif;}
+  .admin-btn:hover{background:var(--teal-subtle);}
+
+  #hero{min-height:100vh;display:flex;align-items:center;padding:8rem 4rem 4rem;position:relative;overflow:hidden;}
+  .hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(0,212,200,0.08) 0%,transparent 70%);top:50%;right:-100px;transform:translateY(-50%);pointer-events:none;}
+  .hero-glow-2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(0,100,200,0.1) 0%,transparent 70%);bottom:-100px;left:200px;pointer-events:none;}
+  .hero-layout{display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:center;width:100%;max-width:1200px;position:relative;z-index:1;}
+  .hero-content{animation:fadeUp 1s ease both;}
+  .hero-tag{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:1.5rem;padding:0.4rem 1rem;border:1px solid rgba(0,212,200,0.3);border-radius:100px;background:var(--teal-subtle);}
+  .hero-tag::before{content:'';width:6px;height:6px;background:var(--teal);border-radius:50%;animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+  .hero-name{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(3rem,6vw,5rem);line-height:1.05;margin-bottom:0.5rem;letter-spacing:-0.02em;}
+  .hero-name .highlight{color:var(--teal);}
+  .hero-title{font-family:'Syne',sans-serif;font-weight:400;font-size:clamp(0.85rem,1.8vw,1.05rem);color:var(--white-dim);margin-bottom:1.5rem;letter-spacing:0.05em;}
+  .hero-desc{font-size:1rem;line-height:1.8;color:var(--white-dim);max-width:560px;margin-bottom:2.5rem;}
+  .hero-cta{display:flex;gap:1rem;flex-wrap:wrap;}
+  .btn-primary{padding:0.85rem 2rem;background:var(--teal);color:var(--navy);font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border-radius:4px;transition:all 0.3s;border:none;cursor:pointer;}
+  .btn-primary:hover{background:var(--accent);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,212,200,0.3);}
+  .btn-outline{padding:0.85rem 2rem;background:transparent;color:var(--teal);font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border-radius:4px;border:1px solid rgba(0,212,200,0.4);transition:all 0.3s;cursor:pointer;}
+  .btn-outline:hover{background:var(--teal-subtle);border-color:var(--teal);transform:translateY(-2px);}
+
+  .hero-photo-wrap{position:relative;flex-shrink:0;}
+  .hero-photo{width:260px;height:260px;border-radius:50%;border:2px solid rgba(0,212,200,0.3);object-fit:cover;display:block;background:var(--navy-light);box-shadow:0 0 60px rgba(0,212,200,0.15);}
+  .hero-photo-placeholder{width:260px;height:260px;border-radius:50%;border:2px dashed rgba(0,212,200,0.3);background:var(--navy-light);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;color:var(--white-dim);font-size:0.8rem;letter-spacing:0.08em;box-shadow:0 0 60px rgba(0,212,200,0.1);cursor:pointer;transition:all 0.3s;}
+  .hero-photo-placeholder:hover{border-color:var(--teal);background:var(--teal-subtle);}
+  .hero-photo-ring{position:absolute;inset:-12px;border-radius:50%;border:1px solid rgba(0,212,200,0.15);animation:spin 20s linear infinite;pointer-events:none;}
+  .hero-photo-ring::before{content:'';position:absolute;top:-3px;left:50%;transform:translateX(-50%);width:6px;height:6px;background:var(--teal);border-radius:50%;}
+  @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+  .hero-stats{display:flex;gap:3rem;margin-top:4rem;padding-top:3rem;border-top:1px solid rgba(0,212,200,0.1);flex-wrap:wrap;}
+  .stat-num{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;color:var(--teal);line-height:1;}
+  .stat-label{font-size:0.75rem;color:var(--white-dim);letter-spacing:0.1em;text-transform:uppercase;margin-top:0.3rem;}
+
+  section{padding:6rem 4rem;position:relative;z-index:1;}
+  .section-tag{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--teal);margin-bottom:0.75rem;display:flex;align-items:center;gap:0.75rem;}
+  .section-tag::before{content:'';width:30px;height:1px;background:var(--teal);}
+  .section-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,4vw,2.8rem);line-height:1.1;margin-bottom:1rem;letter-spacing:-0.02em;}
+  .section-sub{color:var(--white-dim);max-width:560px;line-height:1.8;margin-bottom:3rem;}
+
+  #about{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-mid) 100%);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;max-width:1200px;margin:0 auto;}
+  .about-text p{color:var(--white-dim);line-height:1.9;margin-bottom:1.2rem;font-size:0.95rem;}
+  .about-text p strong{color:var(--white);font-weight:500;}
+  .cert-badge{display:inline-flex;align-items:center;gap:0.6rem;padding:0.6rem 1.2rem;background:var(--teal-subtle);border:1px solid rgba(0,212,200,0.2);border-radius:6px;font-size:0.8rem;margin-top:0.5rem;}
+  .cert-badge span{color:var(--teal);font-weight:500;}
+  .about-skills{display:flex;flex-direction:column;gap:1.5rem;}
+  .skill-item{display:flex;flex-direction:column;gap:0.5rem;}
+  .skill-header{display:flex;justify-content:space-between;font-size:0.8rem;letter-spacing:0.05em;}
+  .skill-name{color:var(--white);} .skill-pct{color:var(--teal);font-weight:500;}
+  .skill-bar{height:2px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;}
+  .skill-fill{height:100%;background:linear-gradient(90deg,var(--teal-dim),var(--teal));border-radius:2px;}
+
+  #services{background:var(--navy-mid);}
+  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;max-width:1200px;margin:0 auto;}
+  .service-card{padding:2.5rem;background:var(--navy-light);border:1px solid rgba(0,212,200,0.08);border-radius:8px;transition:all 0.4s;position:relative;overflow:hidden;}
+  .service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--teal),transparent);transform:scaleX(0);transition:transform 0.4s;}
+  .service-card:hover{border-color:rgba(0,212,200,0.2);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.3);}
+  .service-card:hover::before{transform:scaleX(1);}
+  .service-icon{width:48px;height:48px;background:var(--teal-subtle);border:1px solid rgba(0,212,200,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;font-size:1.4rem;}
+  .service-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:0.75rem;}
+  .service-desc{color:var(--white-dim);font-size:0.875rem;line-height:1.7;}
+
+  #gallery{background:var(--navy);}
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:1200px;margin:0 auto;}
+  .gallery-item{aspect-ratio:4/3;border-radius:8px;overflow:hidden;border:1px solid rgba(0,212,200,0.08);background:var(--navy-light);position:relative;cursor:pointer;transition:all 0.3s;}
+  .gallery-item:hover{border-color:rgba(0,212,200,0.3);transform:scale(1.02);}
+  .gallery-item img{width:100%;height:100%;object-fit:cover;}
+  .gallery-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;color:var(--white-subtle);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;}
+  .gallery-placeholder svg{opacity:0.3;}
+  .gallery-item-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,15,30,0.8) 0%,transparent 60%);opacity:0;transition:opacity 0.3s;display:flex;align-items:flex-end;padding:1rem;}
+  .gallery-item:hover .gallery-item-overlay{opacity:1;}
+  .gallery-item-label{font-size:0.75rem;color:var(--white);letter-spacing:0.05em;}
+
+  #experience{background:var(--navy-mid);}
+  .exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:1200px;margin:0 auto;}
+  .exp-col-title{font-family:'Syne',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid rgba(0,212,200,0.15);}
+  .timeline{display:flex;flex-direction:column;}
+  .timeline-item{display:flex;gap:1.5rem;padding-bottom:2rem;position:relative;}
+  .timeline-item:not(:last-child)::before{content:'';position:absolute;left:7px;top:16px;bottom:0;width:1px;background:linear-gradient(180deg,rgba(0,212,200,0.3),transparent);}
+  .timeline-dot{width:15px;height:15px;min-width:15px;border-radius:50%;border:2px solid var(--teal);background:var(--navy);margin-top:3px;position:relative;z-index:1;}
+  .timeline-dot.current{background:var(--teal);box-shadow:0 0 10px rgba(0,212,200,0.5);}
+  .timeline-period{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:0.3rem;}
+  .timeline-role{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:0.2rem;}
+  .timeline-org{font-size:0.8rem;color:var(--white-dim);margin-bottom:0.6rem;}
+  .timeline-desc{font-size:0.82rem;color:rgba(232,240,242,0.5);line-height:1.6;}
+
+  #publications{background:var(--navy);}
+  .pub-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:1200px;margin:0 auto;}
+  .pub-card{padding:2rem;background:var(--navy-light);border:1px solid rgba(0,212,200,0.08);border-radius:8px;transition:all 0.3s;}
+  .pub-card:hover{border-color:rgba(0,212,200,0.2);transform:translateY(-3px);}
+  .pub-journal{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);margin-bottom:0.5rem;}
+  .pub-title{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;line-height:1.4;margin-bottom:0.75rem;}
+  .pub-desc{font-size:0.82rem;color:var(--white-dim);line-height:1.6;}
+  .pub-date{font-size:0.75rem;color:var(--white-subtle);margin-top:1rem;}
+
+  #teaching{background:var(--navy-mid);}
+  .teaching-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;max-width:1200px;margin:0 auto;}
+  .courses-list{display:flex;flex-direction:column;gap:0.75rem;}
+  .course-item{display:flex;align-items:center;gap:1rem;padding:0.9rem 1.2rem;background:var(--navy-light);border:1px solid rgba(0,212,200,0.08);border-radius:6px;font-size:0.875rem;transition:all 0.3s;}
+  .course-item:hover{border-color:rgba(0,212,200,0.2);background:var(--teal-subtle);}
+  .course-dot{width:6px;height:6px;min-width:6px;background:var(--teal);border-radius:50%;}
+  .training-cards{display:flex;flex-direction:column;gap:1rem;}
+  .training-card{padding:1.5rem;background:var(--navy-light);border:1px solid rgba(0,212,200,0.08);border-radius:6px;transition:all 0.3s;}
+  .training-card:hover{border-color:rgba(0,212,200,0.2);}
+  .training-label{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);margin-bottom:0.4rem;}
+  .training-title{font-family:'Syne',sans-serif;font-weight:600;font-size:0.9rem;margin-bottom:0.4rem;}
+  .training-desc{font-size:0.8rem;color:var(--white-dim);line-height:1.6;}
+
+  #contact{background:var(--navy-mid);}
+  .contact-wrap{max-width:700px;margin:0 auto;text-align:center;}
+  .contact-wrap .section-tag{justify-content:center;}
+  .contact-wrap .section-tag::before{display:none;}
+  .contact-email{font-family:'Syne',sans-serif;font-size:clamp(1.2rem,3vw,2rem);font-weight:700;color:var(--teal);text-decoration:none;display:block;margin:1.5rem 0;transition:opacity 0.3s;}
+  .contact-email:hover{opacity:0.7;}
+  .contact-links{display:flex;justify-content:center;gap:1.5rem;margin-top:2rem;flex-wrap:wrap;}
+  .contact-link{display:flex;align-items:center;gap:0.5rem;padding:0.65rem 1.5rem;border:1px solid rgba(0,212,200,0.2);border-radius:100px;color:var(--white-dim);text-decoration:none;font-size:0.8rem;letter-spacing:0.08em;transition:all 0.3s;}
+  .contact-link:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-subtle);}
+
+  footer{padding:2rem 4rem;border-top:1px solid rgba(0,212,200,0.08);display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1;}
+  .footer-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:var(--teal);letter-spacing:0.1em;}
+  .footer-copy{font-size:0.75rem;color:var(--white-subtle);}
+
+  /* ADMIN PANEL */
+  .admin-overlay{position:fixed;inset:0;background:rgba(8,15,30,0.98);z-index:9999;display:none;flex-direction:column;overflow-y:auto;padding:2rem;backdrop-filter:blur(20px);}
+  .admin-overlay.open{display:flex;}
+  .admin-inner{max-width:800px;width:100%;margin:0 auto;}
+  .admin-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid rgba(0,212,200,0.2);}
+  .admin-title{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;color:var(--teal);}
+  .admin-close{background:transparent;border:1px solid rgba(0,212,200,0.3);color:var(--white-dim);padding:0.4rem 1rem;border-radius:100px;cursor:pointer;font-size:0.85rem;transition:all 0.3s;}
+  .admin-close:hover{border-color:var(--teal);color:var(--teal);}
+  .admin-section{margin-bottom:2.5rem;}
+  .admin-section-title{font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(0,212,200,0.1);}
+  .admin-upload-area{border:2px dashed rgba(0,212,200,0.2);border-radius:8px;padding:2rem;text-align:center;cursor:pointer;transition:all 0.3s;position:relative;}
+  .admin-upload-area:hover{border-color:var(--teal);background:var(--teal-subtle);}
+  .admin-upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+  .admin-upload-label{font-size:0.85rem;color:var(--white-dim);}
+  .admin-upload-label span{color:var(--teal);}
+  .admin-gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;margin-top:1rem;}
+  .admin-gallery-item{aspect-ratio:4/3;border-radius:6px;overflow:hidden;border:1px solid rgba(0,212,200,0.1);position:relative;background:var(--navy-light);}
+  .admin-gallery-item img{width:100%;height:100%;object-fit:cover;}
+  .admin-gallery-remove{position:absolute;top:4px;right:4px;background:rgba(8,15,30,0.8);border:1px solid rgba(255,100,100,0.4);color:#ff6464;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:0.7rem;transition:all 0.3s;opacity:0;}
+  .admin-gallery-item:hover .admin-gallery-remove{opacity:1;}
+  .admin-profile-preview{display:flex;align-items:center;gap:1.5rem;margin-bottom:1rem;}
+  .admin-profile-img{width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid rgba(0,212,200,0.3);background:var(--navy-light);}
+  .admin-input{width:100%;padding:0.65rem 1rem;background:var(--navy-light);border:1px solid rgba(0,212,200,0.15);border-radius:6px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:0.875rem;margin-bottom:0.75rem;outline:none;transition:border 0.3s;}
+  .admin-input:focus{border-color:var(--teal);}
+  .admin-save-btn{padding:0.75rem 2rem;background:var(--teal);color:var(--navy);font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;border:none;border-radius:4px;cursor:pointer;transition:all 0.3s;}
+  .admin-save-btn:hover{background:var(--accent);}
+  .admin-toast{position:fixed;bottom:2rem;right:2rem;padding:0.75rem 1.5rem;background:var(--teal);color:var(--navy);border-radius:6px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;z-index:99999;transform:translateY(100px);opacity:0;transition:all 0.3s;}
+  .admin-toast.show{transform:translateY(0);opacity:1;}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+  .fade-up{opacity:1;transform:none;}
+  .skill-fill{transform:scaleX(1) !important;}
+
+  @media(max-width:1000px){
+    nav{padding:1.2rem 2rem;} .nav-links{gap:1.2rem;}
+    #hero{padding:7rem 2rem 4rem;} section{padding:5rem 2rem;}
+    .hero-layout{grid-template-columns:1fr;} .hero-photo-wrap{display:none;}
+    .about-grid,.exp-grid,.teaching-grid,.pub-grid{grid-template-columns:1fr;gap:3rem;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    footer{padding:1.5rem 2rem;flex-direction:column;gap:0.75rem;text-align:center;}
+  }
+  @media(max-width:600px){.nav-links{display:none;}.gallery-grid{grid-template-columns:1fr;}.hero-stats{gap:2rem;}.admin-gallery-grid{grid-template-columns:repeat(2,1fr);}}
+  ::-webkit-scrollbar{width:5px;} ::-webkit-scrollbar-track{background:var(--navy);} ::-webkit-scrollbar-thumb{background:rgba(0,212,200,0.3);border-radius:10px;}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<nav>
+  <a href="#hero" class="nav-logo">SPATI<span>ORA</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#publications">Research</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="admin-btn" onclick="openAdmin()">⚙ Admin</button>
+</nav>
+
+<section id="hero">
+  <div class="hero-glow"></div><div class="hero-glow-2"></div>
+  <div class="hero-layout">
+    <div class="hero-content">
+      <div class="hero-tag">Open to Collaborations</div>
+      <h1 class="hero-name">Muhammad<br><span class="highlight">Abia</span></h1>
+      <p class="hero-title">GIS & Remote Sensing Specialist · Consultant · Trainer & Lecturer</p>
+      <p class="hero-desc">Geospatial professional delivering spatial intelligence for government agencies across Indonesia. MEng in Geodesy from ITB. BNSP Certified GIS Professional.</p>
+      <div class="hero-cta">
+        <a href="#gallery" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item"><div class="stat-num">7+</div><div class="stat-label">Years Experience</div></div>
+        <div class="stat-item"><div class="stat-num">5</div><div class="stat-label">Semesters Teaching</div></div>
+        <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">Universities</div></div>
+        <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">Publications</div></div>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-ring"></div>
+      <div id="heroPhotoContainer">
+        <div class="hero-photo-placeholder" onclick="openAdmin()">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          <span>Add Photo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="about-grid">
+    <div class="fade-up">
+      <div class="section-tag">About Me</div>
+      <h2 class="section-title">Spatial Intelligence,<br>Applied.</h2>
+      <div class="about-text">
+        <p>I am a <strong>GIS and Remote Sensing Specialist</strong> with over 7 years of professional experience in geospatial consultancy, currently working at <strong>PT. Datem Indonesia</strong> as Geographic Information System Specialist serving government sector clients.</p>
+        <p>My expertise spans spatial analysis & modeling, geodatabase development, and satellite imagery interpretation using <strong>ArcGIS, QGIS, and Google Earth Engine</strong>. My research includes benthic ecosystem mapping using Sentinel-2 and DEM-based hydrological modeling.</p>
+        <p>I hold a <strong>Master of Engineering in Geodesy & Geomatic Engineering from ITB (2021–2023)</strong>, and regularly serve as Adjunct Lecturer at Universitas Jenderal Achmad Yani (Unjani) and as technical trainer for government GIS programs.</p>
+        <div class="cert-badge">🏅 <span>Ahli Madya Sistem Informasi Geografis</span> — BNSP Certified (Sep 2024 – Sep 2029)</div>
+      </div>
+    </div>
+    <div class="about-skills fade-up">
+      <div class="section-tag">Core Competencies</div><br>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Spatial Analysis & Modeling</span></div><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Satellite Image Interpretation</span></div><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Geodatabase Development</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">ArcGIS / QGIS</span></div><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Google Earth Engine</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Project Leadership</span></div><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="fade-up" style="text-align:center;margin-bottom:3rem">
+      <div class="section-tag" style="justify-content:center;"><span style="width:30px;height:1px;background:var(--teal);display:inline-block"></span>&nbsp;Services</div>
+      <h2 class="section-title">What I Offer</h2>
+      <p class="section-sub" style="margin:0 auto">Comprehensive geospatial solutions from data acquisition to spatial intelligence for government and private sector clients.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up"><div class="service-icon">🛰️</div><div class="service-title">GIS & Remote Sensing Consultancy</div><p class="service-desc">End-to-end geospatial consulting including satellite image analysis, spatial modeling, and geodatabase development for government projects.</p></div>
+      <div class="service-card fade-up"><div class="service-icon">🗺️</div><div class="service-title">Cadastral & Topographic Mapping</div><p class="service-desc">Specialized mapping for land administration, cadastral systems, and Rupabumi topographic mapping at national scale.</p></div>
+      <div class="service-card fade-up"><div class="service-icon">📊</div><div class="service-title">Spatial Analysis & Modeling</div><p class="service-desc">Advanced spatial analysis using DEM products (SRTM, ASTER GDEM, NASADEM), thematic mapping, and hydrological & benthic ecosystem modeling.</p></div>
+      <div class="service-card fade-up"><div class="service-icon">🎓</div><div class="service-title">Technical Training & Workshop</div><p class="service-desc">Hands-on GIS and remote sensing training for government agencies and institutions. Experience training geography teachers and government officials.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="fade-up" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;">
+      <div>
+        <div class="section-tag">Gallery</div>
+        <h2 class="section-title">Documentation & Work</h2>
+        <p class="section-sub" style="margin-bottom:0">Photos from field work, training sessions, and project documentation.</p>
+      </div>
+      <button class="btn-outline" onclick="openAdmin()" style="height:fit-content;white-space:nowrap">+ Add Photos</button>
+    </div>
+    <div class="gallery-grid fade-up" id="galleryGrid">
+      <div class="gallery-item"><div class="gallery-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Training Session</span></div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Field Survey</span></div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Project Work</span></div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Lecture</span></div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>GIS Maps</span></div></div>
+      <div class="gallery-item"><div class="gallery-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Workshop</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="fade-up" style="margin-bottom:3rem"><div class="section-tag">Experience</div><h2 class="section-title">Professional Journey</h2></div>
+    <div class="exp-grid">
+      <div class="fade-up">
+        <div class="exp-col-title">Work Experience</div>
+        <div class="timeline">
+          <div class="timeline-item"><div class="timeline-dot current"></div><div class="timeline-content"><div class="timeline-period">Jan 2025 — Present</div><div class="timeline-role">Geographic Information System Specialist</div><div class="timeline-org">PT. Datem Indonesia · Bandung, West Java</div><div class="timeline-desc">GIS specialist delivering geospatial solutions for government sector clients in Indonesia.</div></div></div>
+          <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-period">Previous Role</div><div class="timeline-role">Geographic Information Systems Analyst</div><div class="timeline-org">PT. Global Asia Teknologi Solusindo</div><div class="timeline-desc">Performed diverse GIS analysis tasks for project deliverables.</div></div></div>
+          <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-period">Sep 2019 — Sep 2021</div><div class="timeline-role">GIS Trainer</div><div class="timeline-org">PT. Elligo Mappa Erda · Bandung</div><div class="timeline-desc">Provided GIS training materials and facilitated technical training programs over 2 years.</div></div></div>
+          <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-period">Oct – Nov 2019</div><div class="timeline-role">Team Trainer</div><div class="timeline-org">PT. Orca Cendekia · Jakarta</div><div class="timeline-desc">Delivered ArcGIS training for 3D Data Modeling, Terrain and Spatial Analysis.</div></div></div>
+          <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-period">Apr – Sep 2017</div><div class="timeline-role">GIS Technician</div><div class="timeline-org">PT. Delima Laksana Tata · Jakarta</div><div class="timeline-desc">Analyzed survey data using ArcGIS for Railway Crossings Identification project at the Ministry of Transportation, Republic of Indonesia.</div></div></div>
+        </div>
+      </div>
+      <div class="fade-up">
+        <div class="exp-col-title">Education & Academic</div>
+        <div class="timeline">
+          <div class="timeline-item"><div class="timeline-dot current"></div><div class="timeline-content"><div class="timeline-period">Jan 2025 — Present</div><div class="timeline-role">Adjunct Lecturer</div><div class="timeline-org">Universitas Jenderal Achmad Yani (Unjani) · Cimahi, West Java</div><div class="timeline-desc">Teaching GIS, Digital Mapping, Thematic Mapping, Digital Photogrammetry, Property & Land Information Systems, and Programming. 3 active semesters.</div></div></div>
+          <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-period">2021 — 2023</div><div class="timeline-role">Master of Engineering (MEng)</div><div class="timeline-org">Institut Teknologi Bandung (ITB)</div><div class="timeline-desc">Geodesy and Geomatic Engineering. Research on DEM product assessment for hydrological applications.</div></div></div>
+          <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-period">Jan 2018 — Jul 2019</div><div class="timeline-role">Laboratory Staff & Technical Trainer</div><div class="timeline-org">Universitas Pendidikan Indonesia (UPI) · Bandung</div><div class="timeline-desc">Managed GIS Lab equipment. Created training modules and provided ArcGIS training for geography teachers. Served as Publicity & Website Chair for IGEOS-UPSI 2018 international seminar.</div></div></div>
+          <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-period">2013 — 2018</div><div class="timeline-role">Bachelor of Education (BEd)</div><div class="timeline-org">Universitas Pendidikan Indonesia (UPI)</div><div class="timeline-desc">Geography Teacher Education — foundation in geospatial sciences, cartography, and remote sensing.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="publications">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="fade-up" style="margin-bottom:3rem"><div class="section-tag">Research</div><h2 class="section-title">Publications</h2><p class="section-sub">Peer-reviewed research contributing to geospatial science and remote sensing methodology.</p></div>
+    <div class="pub-grid">
+      <div class="pub-card fade-up"><div class="pub-journal">Coastal and Ocean Journal · Dec 2025</div><div class="pub-title">Comparative Analysis of Benthic Ecosystem Mapping Using Allen Coral Atlas and Sentinel-2 in Pagai Islands</div><div class="pub-desc">Comparative study of benthic mapping in Pagai Islands, West Sumatra, utilizing Allen Coral Atlas (Planet Labs Dove, 3–5m) and Sentinel-2 imagery (ESA Copernicus, 10m resolution).</div><div class="pub-date">Coastal and Ocean Journal · 2025</div></div>
+      <div class="pub-card fade-up"><div class="pub-journal">Rekayasa · Jul 2024</div><div class="pub-title">DEM Product Assessment for Hydrological Applications Using Watershed Morphometric Analysis</div><div class="pub-desc">Assessment of SRTM, ASTER GDEM, and NASADEM uncertainty levels by comparing watershed morphometric derivation including hydrological boundaries, river flow networks, and confluence points.</div><div class="pub-date">Rekayasa Journal · July 2024</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="teaching">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="fade-up" style="margin-bottom:3rem"><div class="section-tag">Teaching</div><h2 class="section-title">Academic & Training</h2><p class="section-sub">Combining professional expertise with academic teaching to develop the next generation of geospatial professionals.</p></div>
+    <div class="teaching-grid">
+      <div class="fade-up">
+        <div class="exp-col-title">Courses — Geodesy/Geomatics · Unjani</div>
+        <div class="courses-list">
+          <div class="course-item"><div class="course-dot"></div>Geographic Information Systems</div>
+          <div class="course-item"><div class="course-dot"></div>Digital Mapping</div>
+          <div class="course-item"><div class="course-dot"></div>Thematic Mapping</div>
+          <div class="course-item"><div class="course-dot"></div>Digital Photogrammetry</div>
+          <div class="course-item"><div class="course-dot"></div>Property Information Systems</div>
+          <div class="course-item"><div class="course-dot"></div>Land Information Systems</div>
+          <div class="course-item"><div class="course-dot"></div>Programming</div>
+          <div class="course-item"><div class="course-dot"></div>Indonesian Language</div>
+        </div>
+      </div>
+      <div class="fade-up">
+        <div class="exp-col-title">Training & Speaker Programs</div>
+        <div class="training-cards">
+          <div class="training-card"><div class="training-label">Government Training · PT. Elligo Mappa Erda</div><div class="training-title">GIS Technical Training Program (2019–2021)</div><div class="training-desc">Delivered GIS training materials and facilitated technical programs for government and institutional participants over 2 years.</div></div>
+          <div class="training-card"><div class="training-label">Technical Workshop · PT. Orca Cendekia</div><div class="training-title">ArcGIS for 3D Modeling & Spatial Analysis</div><div class="training-desc">Training on 3D Data Modeling, Terrain Analysis, and Spatial Analysis using ArcGIS for professional participants in Jakarta.</div></div>
+          <div class="training-card"><div class="training-label">Academic Training · UPI Bandung</div><div class="training-title">Basic GIS Training for Geography Teachers</div><div class="training-desc">Created training modules and provided hands-on ArcGIS training for geography teachers as part of UPI's academic outreach program.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-wrap fade-up">
+    <div class="section-tag">Contact</div>
+    <h2 class="section-title">Let's Work Together</h2>
+    <p class="section-sub" style="margin:0 auto 1rem">Open to geospatial consultancy projects, technical training collaborations, and academic engagements. Based in Greater Bandung, Indonesia.</p>
+    <a href="/cdn-cgi/l/email-protection#7b131e1717143b080b1a0f1214091a55121f" class="contact-email" id="contactEmail"><span class="__cf_email__" data-cfemail="e9818c858586a99a99889d80869b88c7808d">[email&#160;protected]</span></a>
+    <div class="contact-links">
+      <a href="https://linkedin.com/in/muhammad-abia-0a249b193" class="contact-link" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://wa.me/" class="contact-link" target="_blank" id="waLink">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <a href="https://spatiora.id" class="contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        spatiora.id
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">SPATIORA</div>
+  <div class="footer-copy">© 2026 Spatiora · Muhammad Abia Saefulloh · Greater Bandung, Indonesia</div>
+</footer>
+
+<!-- ADMIN PANEL -->
+<div class="admin-overlay" id="adminPanel">
+  <div class="admin-inner">
+    <div class="admin-header">
+      <div class="admin-title">⚙ Admin Panel</div>
+      <button class="admin-close" onclick="closeAdmin()">✕ Close</button>
+    </div>
+
+    <div class="admin-section">
+      <div class="admin-section-title">📸 Profile Photo</div>
+      <div class="admin-profile-preview">
+        <img id="adminProfilePreview" class="admin-profile-img" src="" alt="" style="display:none">
+        <div class="admin-upload-area" style="padding:1rem 2rem;display:inline-block;min-width:280px">
+          <input type="file" accept="image/*" onchange="handleProfilePhoto(this)">
+          <div class="admin-upload-label">Click to upload profile photo · <span>PNG, JPG up to 5MB</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-section">
+      <div class="admin-section-title">🖼 Gallery / Documentation Photos</div>
+      <div class="admin-upload-area">
+        <input type="file" accept="image/*" multiple onchange="handleGalleryUpload(this)">
+        <div class="admin-upload-label">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:block;margin:0 auto 0.5rem;opacity:0.4"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Drag & drop or <span>browse files</span> · Multiple images supported
+        </div>
+      </div>
+      <div class="admin-gallery-grid" id="adminGalleryGrid"></div>
+    </div>
+
+    <div class="admin-section">
+      <div class="admin-section-title">📬 Contact Information</div>
+      <input class="admin-input" type="email" id="adminEmail" placeholder="Email (e.g. hello@spatiora.id)" value="hello@spatiora.id">
+      <input class="admin-input" type="text" id="adminWA" placeholder="WhatsApp number (e.g. 6281234567890)">
+      <button class="admin-save-btn" onclick="saveContactInfo()">Save Contact Info</button>
+    </div>
+  </div>
+</div>
+<div class="admin-toast" id="toast">✓ Saved!</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  let galleryImages = [];
+
+  function openAdmin(){ document.getElementById('adminPanel').classList.add('open'); }
+  function closeAdmin(){ document.getElementById('adminPanel').classList.remove('open'); }
+
+  function showToast(msg){
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'), 2500);
+  }
+
+  function handleProfilePhoto(input){
+    if(!input.files[0]) return;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const src = e.target.result;
+      const preview = document.getElementById('adminProfilePreview');
+      preview.src = src; preview.style.display = 'block';
+      document.getElementById('heroPhotoContainer').innerHTML =
+        `<img src="${src}" class="hero-photo" alt="Muhammad Abia">`;
+      showToast('✓ Profile photo updated!');
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+
+  function handleGalleryUpload(input){
+    Array.from(input.files).forEach(file => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const id = Date.now() + Math.random();
+        const label = file.name.replace(/\.[^/.]+$/,'');
+        galleryImages.push({id, src: e.target.result, label});
+        renderGallery(); renderAdminGallery();
+        showToast(`✓ ${galleryImages.length} photo(s) in gallery`);
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function renderGallery(){
+    const grid = document.getElementById('galleryGrid');
+    if(!galleryImages.length) return;
+    grid.innerHTML = galleryImages.map(img => `
+      <div class="gallery-item">
+        <img src="${img.src}" alt="${img.label}">
+        <div class="gallery-item-overlay"><div class="gallery-item-label">${img.label}</div></div>
+      </div>`).join('');
+  }
+
+  function renderAdminGallery(){
+    document.getElementById('adminGalleryGrid').innerHTML = galleryImages.map(img => `
+      <div class="admin-gallery-item">
+        <img src="${img.src}" alt="${img.label}">
+        <div class="admin-gallery-remove" onclick="removeImage('${img.id}')">✕</div>
+      </div>`).join('');
+  }
+
+  function removeImage(id){
+    galleryImages = galleryImages.filter(i => i.id != id);
+    renderGallery(); renderAdminGallery();
+    if(!galleryImages.length){
+      document.getElementById('galleryGrid').innerHTML = ['Training Session','Field Survey','Project Work','Lecture','GIS Maps','Workshop'].map(label=>`
+        <div class="gallery-item"><div class="gallery-placeholder">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>${label}</span></div></div>`).join('');
+    }
+    showToast('Photo removed');
+  }
+
+  function saveContactInfo(){
+    const email = document.getElementById('adminEmail').value;
+    const wa = document.getElementById('adminWA').value;
+    if(email){ document.getElementById('contactEmail').textContent = email; document.getElementById('contactEmail').href = `mailto:${email}`; }
+    if(wa){ document.getElementById('waLink').href = `https://wa.me/${wa}`; }
+    showToast('✓ Contact info saved!');
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        entry.target.querySelectorAll('.skill-fill').forEach(b=>b.classList.add('animated'));
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.05, rootMargin:'0px 0px -50px 0px'});
+  document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+
+  // Fallback: show all content after 1s in case observer doesn't fire
+  setTimeout(() => {
+    document.querySelectorAll('.fade-up').forEach(el => {
+      el.classList.add('visible');
+      el.querySelectorAll('.skill-fill').forEach(b=>b.classList.add('animated'));
+    });
+  }, 800);
+
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = ''
