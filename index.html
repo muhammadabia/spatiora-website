@@ -230,10 +230,7 @@
     <div class="hero-photo-wrap">
       <div class="hero-photo-ring"></div>
       <div id="heroPhotoContainer">
-        <div class="hero-photo-placeholder" onclick="openAdmin()">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-          <span>Add Photo</span>
-        </div>
+        <img src="profile.jpg" class="hero-photo" alt="Muhammad Abia">
       </div>
     </div>
   </div>
@@ -363,6 +360,8 @@
       <div class="fade-up">
         <div class="exp-col-title">Training & Speaker Programs</div>
         <div class="training-cards">
+          <div class="training-card"><div class="training-label">Narasumber · Diskominfo Jabar · Oktober 2025</div><div class="training-title">Pelatihan Pengolahan Data Citra Satelit Menggunakan Google Earth Engine</div><div class="training-desc">Narasumber pada pelatihan klasifikasi dan analisis perubahan tutupan lahan menggunakan Google Earth Engine. Diselenggarakan oleh Dinas Komunikasi dan Informatika Provinsi Jawa Barat, 22–24 Oktober 2025.</div></div>
+          <div class="training-card"><div class="training-label">Narasumber · Diskominfo Jabar · Juli 2025</div><div class="training-title">Pelatihan Jawara Data Geospasial</div><div class="training-desc">Narasumber pada Pelatihan Jawara Data Geospasial di Aula Besar Dinas Lingkungan Hidup Provinsi Jawa Barat, 23 Juli 2025. Diselenggarakan oleh Dinas Komunikasi dan Informatika Provinsi Jawa Barat.</div></div>
           <div class="training-card"><div class="training-label">Government Training · PT. Elligo Mappa Erda</div><div class="training-title">GIS Technical Training Program (2019–2021)</div><div class="training-desc">Delivered GIS training materials and facilitated technical programs for government and institutional participants over 2 years.</div></div>
           <div class="training-card"><div class="training-label">Technical Workshop · PT. Orca Cendekia</div><div class="training-title">ArcGIS for 3D Modeling & Spatial Analysis</div><div class="training-desc">Training on 3D Data Modeling, Terrain Analysis, and Spatial Analysis using ArcGIS for professional participants in Jakarta.</div></div>
           <div class="training-card"><div class="training-label">Academic Training · UPI Bandung</div><div class="training-title">Basic GIS Training for Geography Teachers</div><div class="training-desc">Created training modules and provided hands-on ArcGIS training for geography teachers as part of UPI's academic outreach program.</div></div>
@@ -377,7 +376,7 @@
     <div class="section-tag">Contact</div>
     <h2 class="section-title">Let's Work Together</h2>
     <p class="section-sub" style="margin:0 auto 1rem">Open to geospatial consultancy projects, technical training collaborations, and academic engagements. Based in Greater Bandung, Indonesia.</p>
-    <a href="mailto:muhammad.abia@gmail.com" class="contact-email" id="contactEmail">muhammad.abia@gmail.com</a>
+    <a href="/cdn-cgi/l/email-protection#c1acb4a9a0acaca0a5efa0a3a8a081a6aca0a8adefa2aeac" class="contact-email" id="contactEmail"><span class="__cf_email__" data-cfemail="f598809d9498989491db94979c94b59298949c99db969a98">[email&#160;protected]</span></a>
     <div class="contact-links">
       <a href="https://linkedin.com/in/muhammad-abia-0a249b193" class="contact-link" target="_blank">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -441,7 +440,7 @@
 </div>
 <div class="admin-toast" id="toast">✓ Saved!</div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   let galleryImages = [];
 
   function openAdmin(){ document.getElementById('adminPanel').classList.add('open'); }
@@ -534,11 +533,4 @@
   setTimeout(() => {
     document.querySelectorAll('.fade-up').forEach(el => {
       el.classList.add('visible');
-      el.querySelectorAll('.skill-fill').forEach(b=>b.classList.add('animated'));
-    });
-  }, 800);
-
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    let current = ''
+      el.querySelectorAll('.skill-fill
