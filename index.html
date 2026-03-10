@@ -3,7 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spatiora — Muhammad Abia | GIS & Remote Sensing Specialist</title>
+<title>Muhammad Abia — GIS & Remote Sensing Specialist | Konsultan Geospasial Indonesia</title>
+<meta name="description" content="Muhammad Abia Saefulloh — GIS & Remote Sensing Specialist dengan 9+ tahun pengalaman. Konsultan geospasial, dosen, dan trainer untuk instansi pemerintah di seluruh Indonesia. ITB MEng, BNSP Certified. Bandung, Jawa Barat.">
+<meta name="keywords" content="GIS specialist Indonesia, konsultan GIS Bandung, remote sensing Indonesia, pemetaan satelit, ArcGIS QGIS Google Earth Engine, geospasial Jawa Barat, Muhammad Abia, Spatiora">
+<meta name="author" content="Muhammad Abia Saefulloh">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.spatiora.id/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.spatiora.id/">
+<meta property="og:title" content="Muhammad Abia — GIS & Remote Sensing Specialist">
+<meta property="og:description" content="Konsultan geospasial profesional dengan 9+ tahun pengalaman melayani instansi pemerintah di Indonesia. Spesialisasi analisis citra satelit, pemetaan, dan spatial analysis.">
+<meta property="og:image" content="https://www.spatiora.id/profile.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Muhammad Abia — GIS & Remote Sensing Specialist">
+<meta name="twitter:description" content="Konsultan geospasial profesional, dosen Teknik Geomatika Unjani, BNSP Certified. Bandung, Indonesia.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Crect width='800' height='800' rx='180' fill='%23080f1e'/%3E%3Cellipse cx='400' cy='400' rx='310' ry='120' fill='none' stroke='%2300d4c8' stroke-width='8' transform='rotate(-25 400 400)' opacity='0.5'/%3E%3Ccircle cx='400' cy='390' r='190' fill='%2300d4c8' fill-opacity='0.07'/%3E%3Cpath d='M460 268C460 268 430 252 400 252C355 252 318 275 318 318C318 355 345 372 378 383L422 397C455 408 482 425 482 468C482 514 445 532 400 532C368 532 335 518 315 502' fill='none' stroke='url(%23sg)' stroke-width='46' stroke-linecap='round'/%3E%3Cdefs%3E%3ClinearGradient id='sg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2364ffda'/%3E%3Cstop offset='100%25' stop-color='%2300b4aa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='570' cy='318' r='18' fill='%2300d4c8' opacity='0.9'/%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -142,6 +155,28 @@
   .training-title{font-family:'Syne',sans-serif;font-weight:600;font-size:0.9rem;margin-bottom:0.4rem;}
   .training-desc{font-size:0.8rem;color:var(--white-dim);line-height:1.6;}
 
+  #projects{background:var(--navy);}
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.5rem;max-width:1200px;margin:0 auto;}
+  .project-card{background:var(--navy-light);border:1px solid rgba(0,212,200,0.08);border-radius:10px;overflow:hidden;transition:all 0.4s;position:relative;}
+  .project-card:hover{border-color:rgba(0,212,200,0.25);transform:translateY(-5px);box-shadow:0 24px 60px rgba(0,0,0,0.4);}
+  .project-card-header{padding:1.8rem 1.8rem 1rem;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;}
+  .project-icon{width:44px;height:44px;background:var(--teal-subtle);border:1px solid rgba(0,212,200,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+  .project-year{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--white-subtle);}
+  .project-card-body{padding:0 1.8rem 1.5rem;}
+  .project-client{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);margin-bottom:0.4rem;}
+  .project-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;line-height:1.35;margin-bottom:0.75rem;}
+  .project-desc{font-size:0.82rem;color:var(--white-dim);line-height:1.7;margin-bottom:1rem;}
+  .project-tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
+  .project-tag{padding:0.3rem 0.75rem;background:rgba(0,212,200,0.06);border:1px solid rgba(0,212,200,0.15);border-radius:100px;font-size:0.72rem;color:var(--teal);letter-spacing:0.05em;}
+  .project-card-footer{padding:1rem 1.8rem;border-top:1px solid rgba(0,212,200,0.07);display:flex;align-items:center;gap:0.5rem;}
+  .project-img-wrap{width:100%;aspect-ratio:4/3;overflow:hidden;background:var(--navy-light);border-bottom:1px solid rgba(0,212,200,0.08);position:relative;}
+  .project-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;}
+  .project-card:hover .project-img-wrap img{transform:scale(1.04);}
+  .project-img-placeholder{width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,var(--navy-light) 0%,rgba(0,212,200,0.04) 100%);border-bottom:1px solid rgba(0,212,200,0.08);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;color:var(--white-subtle);font-size:0.72rem;letter-spacing:0.1em;}
+  .project-location{font-size:0.75rem;color:var(--white-subtle);}
+  .pub-link{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.75rem;color:var(--teal);text-decoration:none;margin-top:0.75rem;transition:opacity 0.2s;}
+  .pub-link:hover{opacity:0.7;}
+
   #contact{background:var(--navy-mid);}
   .contact-wrap{max-width:700px;margin:0 auto;text-align:center;}
   .contact-wrap .section-tag{justify-content:center;}
@@ -163,6 +198,7 @@
     .hero-layout{grid-template-columns:1fr;} .hero-photo-wrap{display:none;}
     .about-grid,.exp-grid,.teaching-grid,.pub-grid{grid-template-columns:1fr;gap:3rem;}
     .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .projects-grid{grid-template-columns:1fr;}
     footer{padding:1.5rem 2rem;flex-direction:column;gap:0.75rem;text-align:center;}
   }
   @media(max-width:600px){.nav-links{display:none;}.gallery-grid{grid-template-columns:1fr;}.hero-stats{gap:2rem;}.admin-gallery-grid{grid-template-columns:repeat(2,1fr);}}
@@ -177,6 +213,7 @@
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#publications">Research</a></li>
@@ -192,15 +229,16 @@
       <div class="hero-tag">Open to Collaborations</div>
       <h1 class="hero-name">Muhammad<br><span class="highlight">Abia</span></h1>
       <p class="hero-title">GIS & Remote Sensing Specialist · Consultant · Trainer & Lecturer</p>
-      <p class="hero-desc">Geospatial professional delivering spatial intelligence for government agencies across Indonesia. MEng in Geodesy from ITB. BNSP Certified GIS Professional.</p>
+      <p class="hero-desc">Geospatial engineer helping government agencies turn raw satellite data into actionable spatial intelligence. Specialized in land cover analysis, coastal mapping, and disaster risk assessment — active across Indonesia.</p>
       <div class="hero-cta">
         <a href="#gallery" class="btn-primary">View My Work</a>
         <a href="#contact" class="btn-outline">Get in Touch</a>
       </div>
       <div class="hero-stats">
         <div class="stat-item"><div class="stat-num">9+</div><div class="stat-label">Years Experience</div></div>
-        <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Active Companies</div></div>
-        <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">Publications</div></div>
+        <div class="stat-item"><div class="stat-num">30+</div><div class="stat-label">Gov't Projects</div></div>
+        <div class="stat-item"><div class="stat-num">200+</div><div class="stat-label">Trainees</div></div>
+        <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">Peer-reviewed Publications</div></div>
       </div>
     </div>
     <div class="hero-photo-wrap">
@@ -258,6 +296,227 @@
   </div>
 </section>
 
+<section id="projects">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="fade-up" style="margin-bottom:3rem">
+      <div class="section-tag">Projects</div>
+      <h2 class="section-title">Selected Work</h2>
+      <p class="section-sub">A selection of geospatial projects delivered for government and institutional clients across Indonesia.</p>
+    </div>
+    <div class="projects-grid">
+
+      <!-- 1. ZNT Provinsi (lokasi tidak disebutkan) -->
+      <div class="project-card fade-up">
+        <div class="project-img-wrap">
+          <img src="project1.jpeg" alt="Peta Zona Nilai Tanah" loading="lazy">
+        </div>
+        <div class="project-card-header">
+          <div class="project-icon">🗺️</div>
+          <span class="project-year">2025</span>
+        </div>
+        <div class="project-card-body">
+          <div class="project-client">Kementerian ATR/BPN · PT. Fasade Kobetama Internasional</div>
+          <div class="project-title">Land Zone Value Mapping at Scale 1:10,000</div>
+          <p class="project-desc">Coordinated and executed Land Zone Value (ZNT) mapping at 1:10,000 scale to support property assessment and land administration. Responsibilities included initial zone boundary verification, field survey quality control, and technical reporting to Kementerian ATR/BPN.</p>
+          <div class="project-tags">
+            <span class="project-tag">ZNT Mapping</span>
+            <span class="project-tag">ArcGIS</span>
+            <span class="project-tag">Kadaster</span>
+            <span class="project-tag">Quality Control</span>
+          </div>
+        </div>
+        <div class="project-card-footer">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="project-location">Pulau Jawa (Confidential)</span>
+        </div>
+      </div>
+
+      <!-- 2. Diskominfo Jabar — GEE + QGIS Training (gabung) -->
+      <div class="project-card fade-up">
+        <div class="project-img-wrap">
+          <img src="project2.jpeg" alt="Diskominfo Jabar GIS Training" loading="lazy">
+        </div>
+        <div class="project-card-header">
+          <div class="project-icon">🎓</div>
+          <span class="project-year">2025</span>
+        </div>
+        <div class="project-card-body">
+          <div class="project-client">Dinas Komunikasi dan Informatika Provinsi Jawa Barat</div>
+          <div class="project-title">GIS & Remote Sensing Training — Jawara Data Geospasial</div>
+          <p class="project-desc">Speaker in two official training programs for West Java Provincial Government staff: QGIS training covering spatial analysis and thematic mapping (July 2025), and Google Earth Engine training for land cover classification and satellite-based change detection (October 2025). Both programs organized by Diskominfo Jabar under the Jawara Data Geospasial initiative.</p>
+          <div class="project-tags">
+            <span class="project-tag">Google Earth Engine</span>
+            <span class="project-tag">QGIS</span>
+            <span class="project-tag">Remote Sensing</span>
+            <span class="project-tag">Government Training</span>
+          </div>
+        </div>
+        <div class="project-card-footer">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="project-location">Bandung, Jawa Barat</span>
+        </div>
+      </div>
+
+      <!-- 3. Pemutakhiran Data Bangunan & RTH -->
+      <div class="project-card fade-up">
+        <div class="project-img-wrap">
+          <img src="project3.jpeg" alt="Pemutakhiran Data Bangunan RTH Bandung" loading="lazy">
+        </div>
+        <div class="project-card-header">
+          <div class="project-icon">🏗️</div>
+          <span class="project-year">2025</span>
+        </div>
+        <div class="project-card-body">
+          <div class="project-client">Dinas Cipta Karya, Bina Konstruksi, dan Tata Ruang · Kota Bandung</div>
+          <div class="project-title">Building Data Update & Urban Green Space Evaluation — Bandung</div>
+          <p class="project-desc">Project coordinator for building geodatabase update and green open space (RTH) evaluation across three sub-districts of Bandung City (Gedebage, Kordon, Karees). Covered GIS data quality control procedures, field coordination, and phased reporting to Dinas CKBKTR Kota Bandung.</p>
+          <div class="project-tags">
+            <span class="project-tag">Urban GIS</span>
+            <span class="project-tag">Geodatabase</span>
+            <span class="project-tag">RTH Mapping</span>
+            <span class="project-tag">Project Coordination</span>
+          </div>
+        </div>
+        <div class="project-card-footer">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="project-location">Kota Bandung, Jawa Barat</span>
+        </div>
+      </div>
+
+      <!-- 4. Sigeol -->
+      <div class="project-card fade-up">
+        <div class="project-img-wrap">
+          <img src="project4.jpeg" alt="Aplikasi Sigeol Sumedang" loading="lazy">
+        </div>
+        <div class="project-card-header">
+          <div class="project-icon">💻</div>
+          <span class="project-year">2024</span>
+        </div>
+        <div class="project-card-body">
+          <div class="project-client">Badan Keuangan dan Aset Daerah Kab. Sumedang · PT Global Asia Teknologi Solusindo</div>
+          <div class="project-title">Sigeol Land Geospatial Application Development — Kabupaten Sumedang</div>
+          <p class="project-desc">GIS consultant for the development and update of Sigeol, a web-based geospatial information system owned by the Sumedang Regency Government for land asset management. Work included spatial analysis, geodatabase development, and thematic map visualization derived from land data.</p>
+          <div class="project-tags">
+            <span class="project-tag">WebGIS</span>
+            <span class="project-tag">Geospasial Tanah</span>
+            <span class="project-tag">PostGIS</span>
+            <span class="project-tag">Asset Management</span>
+          </div>
+        </div>
+        <div class="project-card-footer">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="project-location">Kabupaten Sumedang, Jawa Barat</span>
+        </div>
+      </div>
+
+      <!-- 5. BWS Papua WebGIS -->
+      <div class="project-card fade-up">
+        <div class="project-img-wrap">
+          <img src="project5.jpeg" alt="WebGIS BWS Papua" loading="lazy">
+        </div>
+        <div class="project-card-header">
+          <div class="project-icon">🌏</div>
+          <span class="project-year">2022–2023</span>
+        </div>
+        <div class="project-card-body">
+          <div class="project-client">Balai Wilayah Sungai Papua · Kementerian PUPR</div>
+          <div class="project-title">WebGIS Operationalization — Information System for Balai Wilayah Sungai Papua</div>
+          <p class="project-desc">Developed and implemented a web-based GIS platform using ArcGIS Online for Balai Wilayah Sungai (BWS) Papua, Ministry of Public Works. Included central API database integration and conversion, water resource asset monitoring dashboard development, and knowledge transfer to BWS Papua staff.</p>
+          <div class="project-tags">
+            <span class="project-tag">ArcGIS Online</span>
+            <span class="project-tag">WebGIS</span>
+            <span class="project-tag">API Integration</span>
+            <span class="project-tag">Dashboard</span>
+          </div>
+        </div>
+        <div class="project-card-footer">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="project-location">Papua, Indonesia</span>
+        </div>
+      </div>
+
+      <!-- 6. Database PJL WebGIS OpenLayers -->
+      <div class="project-card fade-up">
+        <div class="project-img-wrap">
+          <img src="project6.jpeg" alt="Database Penerangan Jalan Lingkungan WebGIS" loading="lazy">
+        </div>
+        <div class="project-card-header">
+          <div class="project-icon">💡</div>
+          <span class="project-year">2021</span>
+        </div>
+        <div class="project-card-body">
+          <div class="project-client">Dinas Perumahan Kota Bandung · PT. Datem Indonesia</div>
+          <div class="project-title">Neighborhood Street Lighting Geodatabase & WebGIS — Bandung City</div>
+          <p class="project-desc">Built a geodatabase and WebGIS application for inventory and monitoring of neighborhood street lighting (PJL) across Bandung City. The platform was developed using OpenLayers, PostgreSQL/PostGIS, and GeoServer, enabling interactive spatial queries and visualization of street light points for Dinas Perumahan Kota Bandung.</p>
+          <div class="project-tags">
+            <span class="project-tag">OpenLayers</span>
+            <span class="project-tag">PostgreSQL/PostGIS</span>
+            <span class="project-tag">GeoServer</span>
+            <span class="project-tag">Infrastructure GIS</span>
+          </div>
+        </div>
+        <div class="project-card-footer">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="project-location">Kota Bandung, Jawa Barat</span>
+        </div>
+      </div>
+
+      <!-- 7. LiDAR & Foto Udara RBI OSS Bulik -->
+      <div class="project-card fade-up">
+        <div class="project-img-wrap">
+          <img src="project7.jpeg" alt="LiDAR Foto Udara RBI OSS Bulik" loading="lazy">
+        </div>
+        <div class="project-card-header">
+          <div class="project-icon">✈️</div>
+          <span class="project-year">2020</span>
+        </div>
+        <div class="project-card-body">
+          <div class="project-client">Badan Informasi Geospasial (BIG) · PT. Surtech Prima KSO PT. Global Asia</div>
+          <div class="project-title">LiDAR & Aerial Photo Acquisition for RBI Mapping 1:5,000 — OSS Bulik Area</div>
+          <p class="project-desc">Digitization and polygon operator for Indonesia Base Map (RBI) mapping at 1:5,000 scale in the OSS Bulik area using LiDAR and aerial photography data. Responsibilities included spatial data digitizing, editing, and processing from aerial acquisition results, as well as map accuracy control in accordance with BIG standards.</p>
+          <div class="project-tags">
+            <span class="project-tag">LiDAR</span>
+            <span class="project-tag">Aerial Photography</span>
+            <span class="project-tag">RBI Mapping</span>
+            <span class="project-tag">BIG Standard</span>
+          </div>
+        </div>
+        <div class="project-card-footer">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="project-location">Wilayah OSS Bulik, Kalimantan</span>
+        </div>
+      </div>
+
+      <!-- 8. Identifikasi Perlintasan KA -->
+      <div class="project-card fade-up">
+        <div class="project-img-wrap">
+          <img src="project8.jpeg" alt="Identifikasi Perlintasan KA Pulau Jawa" loading="lazy">
+        </div>
+        <div class="project-card-header">
+          <div class="project-icon">🛤️</div>
+          <span class="project-year">2017–2019</span>
+        </div>
+        <div class="project-card-body">
+          <div class="project-client">Direktorat Keselamatan Perkeretaapian, Kemenhub RI · PT. Delima Laksana Tata</div>
+          <div class="project-title">Identification & Evaluation of Railway Level Crossings — Java Island</div>
+          <p class="project-desc">GIS survey data analysis for identification and evaluation of existing railway level crossings along southern Java Island. Supported the Ministry of Transportation's national infrastructure database for railway safety planning, covering spatial digitizing, editing, and map product compilation.</p>
+          <div class="project-tags">
+            <span class="project-tag">ArcGIS</span>
+            <span class="project-tag">Railway GIS</span>
+            <span class="project-tag">Transport Safety</span>
+            <span class="project-tag">National Survey</span>
+          </div>
+        </div>
+        <div class="project-card-footer">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="project-location">Pulau Jawa (National)</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <section id="gallery">
   <div style="max-width:1200px;margin:0 auto">
     <div class="fade-up" style="margin-bottom:2rem;">
@@ -307,6 +566,7 @@
           <div class="timeline-item"><div class="timeline-dot current"></div><div class="timeline-content"><div class="timeline-period">Jan 2025 — Present</div><div class="timeline-role">Geographic Information System Specialist</div><div class="timeline-org">PT. Datem Indonesia · Bandung, West Java</div><div class="timeline-desc">GIS specialist delivering geospatial solutions for government sector clients in Indonesia.</div></div></div>
           <div class="timeline-item"><div class="timeline-dot current"></div><div class="timeline-content"><div class="timeline-period">Jan 2025 — Present</div><div class="timeline-role">GIS Specialist</div><div class="timeline-org">PT. Barata Geospatial Technology · Bandung, West Java</div><div class="timeline-desc">Geospatial specialist contributing to mapping and spatial data projects.</div></div></div>
           <div class="timeline-item"><div class="timeline-dot current"></div><div class="timeline-content"><div class="timeline-period">Active</div><div class="timeline-role">Geographic Information Systems Analyst</div><div class="timeline-org">PT. Global Asia Teknologi Solusindo</div><div class="timeline-desc">Performed diverse GIS analysis tasks for project deliverables.</div></div></div>
+          <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-period">2023 — 2025</div><div class="timeline-role">Independent GIS Consultant</div><div class="timeline-org">Project-based · Bandung, West Java</div><div class="timeline-desc">Engaged in project-based GIS consultancy for spatial planning, land cover mapping, and geodatabase development across multiple government and private sector clients.</div></div></div>
           <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-period">Sep 2019 — Sep 2021</div><div class="timeline-role">GIS Trainer</div><div class="timeline-org">PT. Elligo Mappa Erda · Bandung</div><div class="timeline-desc">Provided GIS training materials and facilitated technical training programs over 2 years.</div></div></div>
           <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-period">Apr – Sep 2017</div><div class="timeline-role">GIS Technician</div><div class="timeline-org">PT. Delima Laksana Tata · Jakarta</div><div class="timeline-desc">Analyzed survey data using ArcGIS for Railway Crossings Identification project at the Ministry of Transportation, Republic of Indonesia.</div></div></div>
         </div>
@@ -328,8 +588,8 @@
   <div style="max-width:1200px;margin:0 auto">
     <div class="fade-up" style="margin-bottom:3rem"><div class="section-tag">Research</div><h2 class="section-title">Publications</h2><p class="section-sub">Peer-reviewed research contributing to geospatial science and remote sensing methodology.</p></div>
     <div class="pub-grid">
-      <div class="pub-card fade-up"><div class="pub-journal">Coastal and Ocean Journal · Dec 2025</div><div class="pub-title">Comparative Analysis of Benthic Ecosystem Mapping Using Allen Coral Atlas and Sentinel-2 in Pagai Islands</div><div class="pub-desc">Comparative study of benthic mapping in Pagai Islands, West Sumatra, utilizing Allen Coral Atlas (Planet Labs Dove, 3–5m) and Sentinel-2 imagery (ESA Copernicus, 10m resolution).</div><div class="pub-date">Coastal and Ocean Journal · 2025</div></div>
-      <div class="pub-card fade-up"><div class="pub-journal">Rekayasa · Jul 2024</div><div class="pub-title">DEM Product Assessment for Hydrological Applications Using Watershed Morphometric Analysis</div><div class="pub-desc">Assessment of SRTM, ASTER GDEM, and NASADEM uncertainty levels by comparing watershed morphometric derivation including hydrological boundaries, river flow networks, and confluence points.</div><div class="pub-date">Rekayasa Journal · July 2024</div></div>
+      <div class="pub-card fade-up"><div class="pub-journal">Coastal and Ocean Journal · Dec 2025</div><div class="pub-title">Comparative Analysis of Benthic Ecosystem Mapping Using Allen Coral Atlas and Sentinel-2 in Pagai Islands</div><div class="pub-desc">Comparative study of benthic mapping in Pagai Islands, West Sumatra, utilizing Allen Coral Atlas (Planet Labs Dove, 3–5m) and Sentinel-2 imagery (ESA Copernicus, 10m resolution).</div><a href="https://journal.ipb.ac.id/coj/article/view/66886" target="_blank" class="pub-link"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Read Article</a><div class="pub-date">Coastal and Ocean Journal · 2025</div></div>
+      <div class="pub-card fade-up"><div class="pub-journal">Rekayasa · Jul 2024</div><div class="pub-title">DEM Product Assessment for Hydrological Applications Using Watershed Morphometric Analysis</div><div class="pub-desc">Assessment of SRTM, ASTER GDEM, and NASADEM uncertainty levels by comparing watershed morphometric derivation including hydrological boundaries, river flow networks, and confluence points.</div><a href="https://journal.trunojoyo.ac.id/rekayasa/article/view/22449" target="_blank" class="pub-link"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Read Article</a><div class="pub-date">Rekayasa Journal · July 2024</div></div>
     </div>
   </div>
 </section>
@@ -339,26 +599,22 @@
     <div class="fade-up" style="margin-bottom:3rem"><div class="section-tag">Teaching</div><h2 class="section-title">Academic & Training</h2><p class="section-sub">Combining professional expertise with academic teaching to develop the next generation of geospatial professionals.</p></div>
     <div class="teaching-grid">
       <div class="fade-up">
-        <div class="exp-col-title">Courses — Geodesy/Geomatics · Unjani</div>
+        <div class="exp-col-title">Academic — Teknik Geomatika · Unjani</div>
+        <p style="font-size:0.82rem;color:var(--white-dim);line-height:1.7;margin-bottom:1.2rem;">Adjunct Lecturer at Universitas Jenderal Achmad Yani (Unjani), Cimahi — active since January 2025. Teaching across 3 semesters in the Geomatics Engineering program.</p>
         <div class="courses-list">
           <div class="course-item"><div class="course-dot"></div>Geographic Information Systems</div>
-          <div class="course-item"><div class="course-dot"></div>Digital Mapping</div>
-          <div class="course-item"><div class="course-dot"></div>Thematic Mapping</div>
+          <div class="course-item"><div class="course-dot"></div>Digital & Thematic Mapping</div>
           <div class="course-item"><div class="course-dot"></div>Digital Photogrammetry</div>
-          <div class="course-item"><div class="course-dot"></div>Property Information Systems</div>
-          <div class="course-item"><div class="course-dot"></div>Land Information Systems</div>
+          <div class="course-item"><div class="course-dot"></div>Property & Land Information Systems</div>
           <div class="course-item"><div class="course-dot"></div>Programming</div>
-          <div class="course-item"><div class="course-dot"></div>Indonesian Language</div>
         </div>
       </div>
       <div class="fade-up">
         <div class="exp-col-title">Training & Speaker Programs</div>
         <div class="training-cards">
-          <div class="training-card"><div class="training-label">Guest Lecturer · Diskominfo West Java · October 2025</div><div class="training-title">Satellite Image Processing Using Google Earth Engine</div><div class="training-desc">Speaker at a government training on land cover classification and land use change analysis using Google Earth Engine. Organized by the Department of Communication and Information, West Java Province, 22–24 October 2025.</div></div>
-          <div class="training-card"><div class="training-label">Guest Lecturer · Diskominfo West Java · July 2025</div><div class="training-title">Jawara Data Geospasial Training Program</div><div class="training-desc">Speaker at the Geospatial Data Champion Training at the Department of Environment, West Java Province, 23 July 2025. Organized by the Department of Communication and Information, West Java Province.</div></div>
-          <div class="training-card"><div class="training-label">Government Training · PT. Elligo Mappa Erda · 2019–2021</div><div class="training-title">GIS Technical Training Program</div><div class="training-desc">Delivered GIS training materials and facilitated technical programs for government and institutional participants over 2 years.</div></div>
-          <div class="training-card"><div class="training-label">Technical Workshop · PT. Orca Cendekia · Jakarta</div><div class="training-title">ArcGIS for 3D Modeling & Spatial Analysis</div><div class="training-desc">Training on 3D Data Modeling, Terrain Analysis, and Spatial Analysis using ArcGIS for professional participants in Jakarta.</div></div>
-          <div class="training-card"><div class="training-label">Academic Training · UPI Bandung</div><div class="training-title">Basic GIS Training for Geography Teachers</div><div class="training-desc">Created training modules and provided hands-on ArcGIS training for geography teachers as part of UPI's academic outreach program.</div></div>
+          <div class="training-card"><div class="training-label">Narasumber · Diskominfo Jawa Barat · Oktober 2025</div><div class="training-title">Satellite Image Processing Using Google Earth Engine</div><div class="training-desc">Speaker at a government training on land cover classification and land use change analysis using GEE. Organized by Dinas Komunikasi dan Informatika Provinsi Jawa Barat, 22–24 October 2025.</div></div>
+          <div class="training-card"><div class="training-label">Narasumber · Diskominfo Jawa Barat · Juli 2025</div><div class="training-title">Jawara Data Geospasial</div><div class="training-desc">Speaker at the Geospatial Data Champion Training, Dinas Lingkungan Hidup Provinsi Jawa Barat, 23 July 2025. Organized by Dinas Komunikasi dan Informatika Provinsi Jawa Barat.</div></div>
+          <div class="training-card"><div class="training-label">GIS Training · PT. Elligo Mappa Erda · 2019–2021</div><div class="training-title">GIS Technical Training Program</div><div class="training-desc">Delivered GIS training for government and institutional participants over 2 years. Also conducted ArcGIS 3D Modeling & Spatial Analysis workshop (PT. Orca Cendekia, Jakarta) and Basic GIS for Geography Teachers (UPI Bandung).</div></div>
         </div>
       </div>
     </div>
@@ -379,7 +635,7 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         LinkedIn
       </a>
-      <a href="https://wa.me/" class="contact-link" target="_blank" id="waLink">
+      <a href="https://wa.me/6282121091952" class="contact-link" target="_blank" id="waLink">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         WhatsApp
       </a>
